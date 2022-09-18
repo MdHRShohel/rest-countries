@@ -7,18 +7,42 @@ const loadCountries = () => {
 }
 
 const displayCountries = countries => {
-    //console.log(countries);
+    //console.log(countries[0]);
     const CountriesHTML = countries.map(country => getCountryHTML(country));
-    //console.log(CountriesHTML[11]);
+    //console.log(CountriesHTML[0]);
     const container = document.getElementById('countries');
     container.innerHTML = CountriesHTML.join(' ');
 };
 
-const getCountryHTML = country => {
+//Original code
+// const getCountryHTML = country => {
+//     return `
+//         <div class="country">
+//             <h2>${country.name?.common}</h2>
+//             <img src="${country.flags.png}">
+//         </div>
+//     `
+// }
+
+//  //option 1
+// const getCountryHTML = country => {
+//     const {name, flags} = country;
+//     //console.log(name, flags);
+//     return `
+//         <div class="country">
+//             <h2>${name.common}</h2>
+//             <img src="${flags.png}">
+//         </div>
+//     `
+// }
+
+ //option 2
+ const getCountryHTML = ({name, flags, area}) => {
     return `
         <div class="country">
-            <h2>${country.name?.common}</h2>
-            <img src="${country.flags.png}">
+            <h2>${name.common}</h2>
+            <p>Area: ${area}</p>
+            <img src="${flags.png}">
         </div>
     `
 }
